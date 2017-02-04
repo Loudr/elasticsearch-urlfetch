@@ -84,7 +84,7 @@ class URLFetchConnection(Connection):
             raw_data = response.content
         except Exception as e:
             self.log_request_fail(method, url, url, body, time.time() - start, exception=e)
-            if isinstance(e, urlfetch_errors.SSLCertificateErrorsource):
+            if isinstance(e, urlfetch_errors.SSLCertificateError):
                 raise SSLError('N/A', str(e), e)
             if isinstance(e, urlfetch_errors.DeadlineExceededError):
                 raise ConnectionTimeout('TIMEOUT', str(e), e)
