@@ -92,7 +92,7 @@ class URLFetchConnection(Connection):
 
         # raise errors based on http status codes, let the client handle those if needed
         if not (200 <= response.status_code < 300) and response.status_code not in ignore:
-            self.log_request_fail(method, url, url, body, duration, response.status_code, raw_data)
+            self.log_request_fail(method, url, url, body, duration)
             self._raise_error(response.status_code, raw_data)
 
         self.log_request_success(method, url, url, body, response.status_code, raw_data, duration)
